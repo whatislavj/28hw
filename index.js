@@ -1,14 +1,13 @@
 async function showUsers() {
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+      const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=5');
       if (!response.ok) {
         throw new Error('Eroare la solicitarea datelor');
       }
   
       const users = await response.json();
-      const firstFiveUsers = users.slice(0, 5);
   
-      firstFiveUsers.forEach((utilizator, index) => {
+      users.forEach((utilizator, index) => {
         console.log(`Utilizatorul ${index + 1}: ${utilizator.name}`);
       });
     } catch (error) {
